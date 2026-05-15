@@ -142,16 +142,8 @@ function initScrollToTop() {
 
 // ====== CONTACT FORM HANDLING ======
 
-const EMAILJS_CONFIG = {
-    // Step 1: Create/connect an EmailJS email service, then paste its Service ID here.
-    serviceId: 'YOUR_EMAILJS_SERVICE_ID',
-    // Step 2: Create an EmailJS template, then paste its Template ID here.
-    // Template variables to use in EmailJS: {{from_name}}, {{from_email}}, {{reply_to}}, {{message}}, {{to_email}}.
-    templateId: 'YOUR_EMAILJS_TEMPLATE_ID',
-    // Step 3: Copy your EmailJS Public Key from Account > API Keys and paste it here.
-    publicKey: 'YOUR_EMAILJS_PUBLIC_KEY',
-    recipientEmail: 'gyana.tcr20@gmail.com'
-};
+// EmailJS Configuration is now loaded from js/config.js (ignored by git)
+// If you're using this for the first time, rename js/config.example.js to js/config.js
 
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
@@ -199,8 +191,15 @@ function initContactForm() {
             setContactFormLoading(true, submitButton, buttonText);
 
             try {
-                await sendEmailJSMessage({ name, email, message });
-                showNotification('> Message sent successfully. Transmission complete.', 'success');
+                if (isEmailJSConfigured()) {
+                    await sendEmailJSMessage({ name, email, message });
+                    showNotification('> Message sent successfully. Transmission complete.', 'success');
+                } else {
+                    // Demo Mode Fallback
+                    console.log('DEMO MODE: Form submission captured:', { name, email, message });
+                    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network lag
+                    showNotification('> [DEMO MODE] Message captured successfully! Configure EmailJS to receive actual emails.', 'success');
+                }
                 contactForm.reset();
             } catch (error) {
                 console.error('EmailJS send failed:', error);
@@ -248,8 +247,8 @@ async function sendEmailJSMessage({ name, email, message }) {
         EMAILJS_CONFIG.serviceId,
         EMAILJS_CONFIG.templateId,
         {
-            from_name: name,
-            from_email: email,
+            name: name,
+            email: email,
             reply_to: email,
             message,
             to_email: EMAILJS_CONFIG.recipientEmail
