@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gyana Ranjan Behera - Cybersecurity Enthusiast | VAPT | Web App Security Portfolio">
+    <meta name="keywords" content="cybersecurity, VAPT, penetration testing, web security, portfolio">
+    <meta name="author" content="Gyana Ranjan Behera">
+    <meta property="og:title" content="Gyana Ranjan Behera - Cybersecurity Portfolio">
+    <meta property="og:description" content="Cybersecurity Enthusiast | VAPT | Web App Security">
+    <meta property="og:type" content="website">
+    
+    <title>Gyana Ranjan Behera - Cybersecurity Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' font-weight='bold' fill='%2300ff41'>G</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ====== SCROLL PROGRESS BAR ====== -->
+    <div id="scrollProgress" class="scroll-progress"></div>
+
+    <!-- ====== NAVIGATION ====== -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <i class="fas fa-shield-alt"></i> GRB
+            </div>
+            
+            <div id="navToggle" class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul id="navMenu" class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ====== HERO SECTION ====== -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="800">
+                <div class="hero-text">
+                    <h1 class="hero-title">Gyana Ranjan Behera</h1>
+                    
+                    <div class="typing-container">
+                        <span class="typing-text">Cybersecurity Enthusiast</span>
+                        <span class="typing-cursor">|</span>
+                    </div>
+                    
+                    <p class="hero-tagline">B.Tech CSE Student | Turning curiosity into security skills</p>
+                    <p class="hero-subtitle">Based in Angul, Odisha, India</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> View My Work
+                        </a>
+                        <a href="assets/resume.pdf" class="btn btn-secondary" download>
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                            <h3>Top 5%</h3>
+                            <p>TryHackMe</p>
+                        </div>
+                        <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                            <h3>125+</h3>
+                            <p>Rooms Completed</p>
+                        </div>
+                        <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                            <h3>3rd Place</h3>
+                            <p>BPUT Hackathon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual" data-aos="fade-left" data-aos-duration="800">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <span class="terminal-button close"></span>
+                        <span class="terminal-button minimize"></span>
+                        <span class="terminal-button maximize"></span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">$</span> whoami
+                        </div>
+                        <div class="terminal-line response">
+                            gyana_ranjan_behera
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">$</span> cat interests.txt
+                        </div>
+                        <div class="terminal-line response">
+                            VAPT | Web Security | Bug Bounty
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">$</span> ./skills.sh
+                        </div>
+                        <div class="terminal-line response">
+                            Loading security arsenal...
+                        </div>
+                        <div class="terminal-line cursor-blink">
+                            <span class="terminal-prompt">$</span> <span class="typing-cursor"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subtle Grid Background -->
+        <div class="hero-grid"></div>
+    </section>
+
+    <!-- ====== ABOUT SECTION ====== -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">About Me</h2>
+            <div class="about-grid">
+                <div class="about-content" data-aos="fade-right">
+                    <div class="about-text">
+                        <p>I'm a passionate B.Tech CSE student from <strong>Synergy Institute of Engineering and Technology</strong>, driven by curiosity about cybersecurity and ethical hacking. My journey began with a fascination for understanding how systems can be compromised and how to defend them.</p>
+                        
+                        <p>I specialize in <strong>Vulnerability Assessment & Penetration Testing (VAPT)</strong>, web application security, and enjoy the thrill of discovering security vulnerabilities. Whether it's crafting payloads, analyzing network traffic, or conducting thorough security assessments, I'm always eager to expand my knowledge.</p>
+                        
+                        <p>Beyond technical skills, I believe in the importance of <strong>continuous learning</strong> and staying updated with the latest threats and defense mechanisms. I'm committed to building a career in cybersecurity where I can make a real impact on organizational security posture.</p>
+                    </div>
+                    
+                    <div class="education-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <div class="education-item">
+                            <h4>B.Tech in Computer Science Engineering</h4>
+                            <p class="education-school">Synergy Institute of Engineering and Technology, Dhenkanal</p>
+                            <p class="education-cgpa">CGPA: <strong>8.27</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="learning-badges" data-aos="fade-left">
+                    <h3>Currently Learning</h3>
+                    <div class="badges-grid">
+                        <div class="badge">
+                            <i class="fas fa-code"></i>
+                            <span>VAPT</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-bug"></i>
+                            <span>Bug Bounty</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-globe"></i>
+                            <span>Web Security</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-chart-line"></i>
+                            <span>SIEM</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-search"></i>
+                            <span>Threat Hunting</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Red Teaming</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== SKILLS SECTION ====== -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Skills & Expertise</h2>
+            
+            <div class="skills-grid">
+                <!-- Programming Languages -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="0">
+                    <h3 class="category-title">
+                        <i class="fas fa-code"></i> Programming
+                    </h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <span>C</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <span>Web Tech</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Tools -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">
+                        <i class="fas fa-tools"></i> Security Tools
+                    </h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
+                            <span>Burp Suite</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
+                            <span>Nmap</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
+                            <span>Metasploit</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
+                            <span>SQLMap</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
+                            <span>Wireshark</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
+                            <span>Hydra</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
+                            <span>Nessus</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
+                            <span>Wazuh</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Concepts -->
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="category-title">
+                        <i class="fas fa-brain"></i> Concepts
+                    </h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <span>Web App Security</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <span>Vulnerability Assessment</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <span>Penetration Testing</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <span>Networking Fundamentals</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== EXPERIENCE SECTION ====== -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Experience</h2>
+            
+            <div class="timeline">
+                <!-- Experience 1 -->
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <h3>Cybersecurity Intern</h3>
+                                <span class="timeline-date">June 2025 – August 2025</span>
+                            </div>
+                            <p class="timeline-company"><i class="fas fa-building"></i> CyberDojo</p>
+                            
+                            <ul class="timeline-responsibilities">
+                                <li>Firewall configuration & access control</li>
+                                <li>Zero Trust VPN implementation using identity-based segmentation</li>
+                                <li>Honeypot deployment and monitoring</li>
+                                <li>Threat detection & security monitoring</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <h3>Brand Manager</h3>
+                                <span class="timeline-date">July 2024 – September 2024</span>
+                            </div>
+                            <p class="timeline-company"><i class="fas fa-building"></i> YHills Edutech Pvt. Ltd.</p>
+                            
+                            <ul class="timeline-responsibilities">
+                                <li>Campus cybersecurity program promotion</li>
+                                <li>Student outreach & enrollment campaigns</li>
+                                <li>Program awareness and marketing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== PROJECTS SECTION ====== -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>Phishing Website Detection System</h3>
+                    </div>
+                    
+                    <p class="project-description">
+                        A machine learning-based system that analyzes URLs to detect phishing websites. It identifies suspicious patterns, abnormal domain characteristics, and redirect anomalies to improve awareness against malicious sites.
+                    </p>
+                    
+                    <div class="project-tags">
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Web Security</span>
+                        <span class="tag">Python</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="#" class="project-link" aria-label="Live Demo">
+                            <i class="fas fa-globe"></i> Live Demo
+                        </a>
+                        <a href="https://github.com" class="project-link" aria-label="GitHub Repository">
+                            <i class="fab fa-github"></i> Repository
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 - Coming Soon -->
+                <div class="project-card coming-soon" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>More Projects Coming Soon</h3>
+                    </div>
+                    
+                    <p class="project-description">
+                        I'm constantly working on new cybersecurity projects. Stay tuned for more innovative solutions in web security, penetration testing, and threat detection.
+                    </p>
+                    
+                    <div class="project-tags">
+                        <span class="tag">In Progress</span>
+                        <span class="tag">Security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== ACHIEVEMENTS SECTION ====== -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Achievements & Certifications</h2>
+            
+            <div class="achievements-grid">
+                <!-- Achievement 1 -->
+                <div class="achievement-card" data-aos="flip-left" data-aos-delay="0">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>BPUT Hackathon Winner</h3>
+                    <p class="achievement-subtitle">3rd Place</p>
+                    <p class="achievement-date">November 2025</p>
+                    <p class="achievement-details">
+                        <strong>AI Resume Builder for Blue-Collar Workers</strong><br>
+                        Innovative solution leveraging AI to create personalized resumes for underrepresented workforce segments.
+                    </p>
+                </div>
+
+                <!-- Achievement 2 -->
+                <div class="achievement-card" data-aos="flip-left" data-aos-delay="100">
+                    <div class="achievement-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>TryHackMe Elite</h3>
+                    <p class="achievement-subtitle">Top 5% Globally</p>
+                    <p class="achievement-date">Active</p>
+                    <div class="achievement-details">
+                        <p><strong>92-day streak</strong><br>
+                        <strong>125+ rooms completed</strong><br>
+                        <strong>15 badges earned</strong></p>
+                    </div>
+                </div>
+
+                <!-- Achievement 3 -->
+                <div class="achievement-card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="achievement-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Deloitte Forage</h3>
+                    <p class="achievement-subtitle">Cybersecurity Job Simulation</p>
+                    <p class="achievement-date">Completed</p>
+                    <p class="achievement-details">
+                        Comprehensive cybersecurity job simulation covering real-world security challenges and industry practices.
+                    </p>
+                </div>
+
+                <!-- Achievement 4 -->
+                <div class="achievement-card" data-aos="flip-left" data-aos-delay="300">
+                    <div class="achievement-icon">
+                        <i class="fas fa-ai"></i>
+                    </div>
+                    <h3>AI Certificate</h3>
+                    <p class="achievement-subtitle">YHills Edutech Pvt. Ltd.</p>
+                    <p class="achievement-date">Completed</p>
+                    <p class="achievement-details">
+                        Comprehensive AI and machine learning fundamentals certification with practical applications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CONTACT SECTION ====== -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-right">
+                    <h3>Let's Connect</h3>
+                    <p>Whether you have an opportunity, question, or just want to discuss cybersecurity, I'd love to hear from you.</p>
+                    
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <p class="detail-label">Email</p>
+                                <a href="mailto:gyana.tcr20@gmail.com">gyana.tcr20@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <p class="detail-label">Location</p>
+                                <p>Angul, Odisha, India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <i class="fas fa-link"></i>
+                            <div>
+                                <p class="detail-label">Connect On</p>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/gyana-ranjan-behera-7047222a1/" target="_blank" aria-label="LinkedIn">
+                                        <i class="fab fa-linkedin"></i> LinkedIn
+                                    </a>
+                                    <a href="https://github.com" target="_blank" aria-label="GitHub">
+                                        <i class="fab fa-github"></i> GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm" data-aos="fade-left">
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            id="name" 
+                            placeholder="Your Name" 
+                            required
+                            aria-label="Your Name"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <input 
+                            type="email" 
+                            id="email" 
+                            placeholder="Your Email" 
+                            required
+                            aria-label="Your Email"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea 
+                            id="message" 
+                            placeholder="Your Message" 
+                            rows="5"
+                            required
+                            aria-label="Your Message"
+                        ></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" aria-label="Send Message">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
+        <div class="container">
+            <p>Built with <i class="fas fa-heart"></i> for cybersecurity © 2026 Gyana Ranjan Behera</p>
+            <p class="terminal-cursor">
+                <span class="cursor-blink">_</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ====== SCROLL TO TOP BUTTON ====== -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ====== SCRIPTS ====== -->
+    <!-- Typed.js for typing animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
