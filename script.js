@@ -142,21 +142,42 @@ function initScrollToTop() {
 
 // ====== CONTACT FORM HANDLING ======
 
+const EMAILJS_CONFIG = {
+    // Step 1: Create/connect an EmailJS email service, then paste its Service ID here.
+    serviceId: 'YOUR_EMAILJS_SERVICE_ID',
+    // Step 2: Create an EmailJS template, then paste its Template ID here.
+    // Template variables to use in EmailJS: {{from_name}}, {{from_email}}, {{reply_to}}, {{message}}, {{to_email}}.
+    templateId: 'YOUR_EMAILJS_TEMPLATE_ID',
+    // Step 3: Copy your EmailJS Public Key from Account > API Keys and paste it here.
+    publicKey: 'YOUR_EMAILJS_PUBLIC_KEY',
+    recipientEmail: 'gyana.tcr20@gmail.com'
+};
+
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
+    const submitButton = contactForm?.querySelector('button[type="submit"]');
+    const buttonText = submitButton?.querySelector('.btn-text');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        initEmailJS();
+
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             // Get form values
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
+            const honeypot = contactForm.querySelector('input[name="_honey"]')?.value.trim();
 
             // Basic validation
             if (!name || !email || !message) {
-                showNotification('Please fill all fields', 'error');
+                showNotification('Fill in name, email, and message before sending.', 'error');
+                return;
+            }
+
+            if (name.length < 2) {
+                showNotification('Please enter your full name.', 'error');
                 return;
             }
 
@@ -165,32 +186,103 @@ function initContactForm() {
                 return;
             }
 
-            // In a real application, you would send this to a backend
-            // For now, we'll just show a success message and reset the form
-            
-            // Simulate sending email (you can replace this with actual backend call)
-            console.log('Form Data:', {
-                name,
-                email,
-                message
-            });
+            if (message.length < 10) {
+                showNotification('Please write a slightly longer message.', 'error');
+                return;
+            }
 
-            // Show success message
-            showNotification('Message sent successfully! I will get back to you soon.', 'success');
+            if (honeypot) {
+                showNotification('Message blocked by spam protection.', 'error');
+                return;
+            }
 
-            // Reset form
-            contactForm.reset();
+            setContactFormLoading(true, submitButton, buttonText);
 
-            // Optional: Actually send email via backend
-            sendEmailViaBackend(name, email, message);
+            try {
+                await sendEmailJSMessage({ name, email, message });
+                showNotification('> Message sent successfully. Transmission complete.', 'success');
+                contactForm.reset();
+            } catch (error) {
+                console.error('EmailJS send failed:', error);
+                showNotification(getEmailJSErrorMessage(error), 'error');
+            } finally {
+                setContactFormLoading(false, submitButton, buttonText);
+            }
         });
     }
+}
+
+function initEmailJS() {
+    if (typeof emailjs === 'undefined') {
+        console.error('EmailJS SDK is not loaded. Check the EmailJS CDN script in index.html.');
+        return;
+    }
+
+    if (isEmailJSConfigured()) {
+        emailjs.init({
+            publicKey: EMAILJS_CONFIG.publicKey
+        });
+    } else {
+        console.warn('EmailJS credentials are still placeholders. Add your Service ID, Template ID, and Public Key in script.js.');
+    }
+}
+
+function isEmailJSConfigured() {
+    return ![
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        EMAILJS_CONFIG.publicKey
+    ].some(value => value.startsWith('YOUR_EMAILJS_'));
+}
+
+async function sendEmailJSMessage({ name, email, message }) {
+    if (typeof emailjs === 'undefined') {
+        throw new Error('EmailJS SDK failed to load. Check your internet connection and CDN script.');
+    }
+
+    if (!isEmailJSConfigured()) {
+        throw new Error('EmailJS is not configured yet. Add your Service ID, Template ID, and Public Key in script.js.');
+    }
+
+    return emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        {
+            from_name: name,
+            from_email: email,
+            reply_to: email,
+            message,
+            to_email: EMAILJS_CONFIG.recipientEmail
+        },
+        {
+            publicKey: EMAILJS_CONFIG.publicKey
+        }
+    );
+}
+
+function getEmailJSErrorMessage(error) {
+    if (error?.text) {
+        return `Message failed: ${error.text}`;
+    }
+
+    return error?.message || 'Message failed to send. Please try again.';
 }
 
 // Email validation function
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+function setContactFormLoading(isLoading, submitButton, buttonText) {
+    if (!submitButton) return;
+
+    submitButton.disabled = isLoading;
+    submitButton.classList.toggle('is-loading', isLoading);
+
+    if (buttonText) {
+        buttonText.textContent = isLoading ? 'Sending...' : 'Send Message';
+    }
 }
 
 // Show notification (toast-like message)
@@ -204,10 +296,11 @@ function showNotification(message, type) {
         top: 20px;
         right: 20px;
         padding: 1rem 1.5rem;
-        background: ${type === 'success' ? '#00ff41' : '#ff0055'};
+        background: ${type === 'success' ? 'rgba(0, 255, 136, 0.95)' : 'rgba(255, 0, 85, 0.95)'};
         color: ${type === 'success' ? '#050505' : '#fff'};
         border-radius: 6px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        border: 1px solid ${type === 'success' ? 'rgba(0, 255, 136, 0.5)' : 'rgba(255, 0, 85, 0.5)'};
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), 0 0 20px ${type === 'success' ? 'rgba(0, 255, 136, 0.18)' : 'rgba(255, 0, 85, 0.18)'};
         z-index: 10000;
         font-weight: 600;
         animation: slideIn 0.3s ease-out;
@@ -253,30 +346,6 @@ function showNotification(message, type) {
             notification.remove();
         }, 300);
     }, 4000);
-}
-
-// Send email via backend (placeholder function)
-async function sendEmailViaBackend(name, email, message) {
-    try {
-        // This is a placeholder - in production, you would have a backend endpoint
-        const response = await fetch('/api/send-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name,
-                email,
-                message,
-                to: 'gyana.tcr20@gmail.com'
-            })
-        });
-
-        // Note: This will fail in production without a backend
-        // You can remove this or set up a backend service
-    } catch (error) {
-        console.log('Note: Backend email service not configured. In production, implement email service.');
-    }
 }
 
 // ====== KEYBOARD NAVIGATION ======
