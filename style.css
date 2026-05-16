@@ -1440,9 +1440,14 @@ body.menu-open {
   }
 
   .target-label {
-    top: 5% !important;
-    right: 5px !important;
-    font-size: 0.65rem !important;
+    top: 8% !important;
+    right: -25px !important;
+    font-size: 0.6rem !important;
+  }
+
+  .target-label::before {
+    width: 20px !important;
+    right: calc(100% + 4px) !important;
   }
 
   .system-badge {
