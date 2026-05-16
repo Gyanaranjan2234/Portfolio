@@ -1500,4 +1500,35 @@ body.menu-open {
     word-break: break-word !important;
     line-height: 1.4 !important;
   }
+
+  /* FIX 6: Mobile Navigation Z-Index Trap & Visibility */
+  nav, header, .navbar, #navbar {
+    z-index: 100000 !important; /* Must be higher than nav-overlay (99998) */
+    backdrop-filter: none !important; /* Prevent containing block bugs */
+  }
+
+  #navMenu, .nav-menu {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: #0d0d0d !important;
+    z-index: 99999 !important;
+  }
+
+  #navMenu.active, .nav-menu.active {
+    right: 0 !important;
+    transform: none !important;
+  }
+
+  #navToggle, .nav-toggle {
+    z-index: 100001 !important; /* Keep Hamburger/X above the menu */
+    display: flex !important;
+    visibility: visible !important;
+  }
+
+  #navMenu li, .nav-menu li, .nav-link {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
 }
