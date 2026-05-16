@@ -85,7 +85,9 @@ function updateScrollProgress() {
     const scrollPercent = docHeight ? (scrollTop / docHeight) * 100 : 0;
     
     const scrollProgress = document.getElementById('scrollProgress');
-    scrollProgress.style.width = scrollPercent + '%';
+    if (scrollProgress) {
+        scrollProgress.style.width = scrollPercent + '%';
+    }
 }
 
 // ====== TYPING ANIMATION ======
@@ -96,10 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof Typed !== 'undefined') {
         new Typed('.typing-text', {
             strings: [
-                'Cybersecurity Enthusiast',
                 'VAPT Learner',
-                'Web App Security Expert',
-                'Bug Bounty Hunter',
+                'Bug Bounty Hunter', 
+                'Web App Security',
                 'Ethical Hacker'
             ],
             typeSpeed: 60,
@@ -131,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initScrollToTop() {
     const scrollToTopBtn = document.getElementById('scrollToTop');
+    if (!scrollToTopBtn) return;
 
     // Show/hide scroll to top button
     window.addEventListener('scroll', () => {
@@ -151,9 +153,6 @@ function initScrollToTop() {
 }
 
 // ====== CONTACT FORM HANDLING ======
-
-// EmailJS Configuration is now loaded from js/config.js (ignored by git)
-// If you're using this for the first time, rename js/config.example.js to js/config.js
 
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
@@ -232,16 +231,17 @@ function initEmailJS() {
             publicKey: EMAILJS_CONFIG.publicKey
         });
     } else {
-        console.warn('EmailJS credentials are still placeholders. Add your Service ID, Template ID, and Public Key in script.js.');
+        console.warn('EmailJS credentials are still placeholders. Add your Service ID, Template ID, and Public Key in config.js.');
     }
 }
 
 function isEmailJSConfigured() {
+    if (typeof EMAILJS_CONFIG === 'undefined') return false;
     return ![
         EMAILJS_CONFIG.serviceId,
         EMAILJS_CONFIG.templateId,
         EMAILJS_CONFIG.publicKey
-    ].some(value => value.startsWith('YOUR_EMAILJS_'));
+    ].some(value => !value || value.startsWith('YOUR_EMAILJS_'));
 }
 
 async function sendEmailJSMessage({ name, email, message }) {
@@ -250,7 +250,7 @@ async function sendEmailJSMessage({ name, email, message }) {
     }
 
     if (!isEmailJSConfigured()) {
-        throw new Error('EmailJS is not configured yet. Add your Service ID, Template ID, and Public Key in script.js.');
+        throw new Error('EmailJS is not configured yet. Add your Service ID, Template ID, and Public Key in config.js.');
     }
 
     return emailjs.send(
