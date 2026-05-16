@@ -95,6 +95,24 @@ body {
     gap: 0.5rem;
     letter-spacing: 1px;
     text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.6));
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.navbar-logo:hover .logo-icon {
+    filter: drop-shadow(0 0 12px rgba(0, 255, 65, 0.8));
 }
 
 .navbar-logo i {
@@ -984,6 +1002,12 @@ section:nth-child(even) { background: linear-gradient(180deg, var(--bg-secondary
 @media (max-width: 768px) {
     /* Navbar Mobile Fix */
     .navbar-container { padding: 15px 20px; }
+    
+    .logo-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
     .nav-menu {
         position: fixed;
         right: -100%;
@@ -1054,6 +1078,11 @@ section:nth-child(even) { background: linear-gradient(180deg, var(--bg-secondary
     .skills-list { grid-template-columns: repeat(2, 1fr); }
     .social-links { flex-direction: column; }
     .social-links a { width: 100%; }
+    
+    .logo-icon {
+        width: 24px;
+        height: 24px;
+    }
     .project-links { flex-direction: column; }
     
     /* Contact Form Fix */
