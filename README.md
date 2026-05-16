@@ -2,7 +2,7 @@
 
 A professional, high-performance cybersecurity portfolio website. Designed with a hacker-aesthetic, featuring glassmorphism, terminal-style interfaces, and smooth interactive elements.
 
-![Portfolio Preview](assets/images/profile.png)
+![Portfolio Preview](assets/images/profile.jpg)
 
 ## 🚀 Live Demo
 View the live site here: [Gyanaranjan.github.io/Portfolio](https://Gyanaranjan2234.github.io/Portfolio)

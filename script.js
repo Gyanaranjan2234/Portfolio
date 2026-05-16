@@ -7,19 +7,29 @@
 // Mobile Menu Toggle
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
+const navOverlay = document.getElementById('navOverlay');
 const navLinks = document.querySelectorAll('.nav-link');
 
-navToggle.addEventListener('click', () => {
+const toggleMenu = () => {
     navToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
-});
+    navOverlay.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
+};
+
+const closeMenu = () => {
+    navToggle.classList.remove('active');
+    navMenu.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
+};
+
+navToggle.addEventListener('click', toggleMenu);
+navOverlay.addEventListener('click', closeMenu);
 
 // Close mobile menu when link is clicked
 navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
+    link.addEventListener('click', closeMenu);
 });
 
 // ====== SMOOTH SCROLLING & ACTIVE LINK ======
