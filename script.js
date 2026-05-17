@@ -213,7 +213,7 @@ function initContactForm() {
 
             try {
                 await sendEmailJSMessage({ name, email, message });
-                showNotification('> Message sent successfully. Transmission complete.', 'success');
+                showNotification('> Secure message delivered successfully.', 'success');
                 contactForm.reset();
             } catch (error) {
                 console.error('EmailJS send failed:', error);
