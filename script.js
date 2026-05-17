@@ -154,6 +154,13 @@ function initScrollToTop() {
 
 // ====== CONTACT FORM HANDLING ======
 
+const EMAILJS_CREDENTIALS = {
+    serviceId: 'service_17hzoqa',
+    templateId: 'template_91tqbq5',
+    publicKey: 'wOPBWFa60_euECepa',
+    recipientEmail: 'gyana.tcr20@gmail.com'
+};
+
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     const submitButton = contactForm?.querySelector('button[type="submit"]');
@@ -205,17 +212,9 @@ function initContactForm() {
             setContactFormLoading(true, submitButton, buttonText);
 
             try {
-                if (isEmailJSConfigured()) {
-                    await sendEmailJSMessage({ name, email, message });
-                    showNotification('> Message sent successfully. Transmission complete.', 'success');
-                    contactForm.reset();
-                } else {
-                    // Demo Mode Fallback
-                    console.log('DEMO MODE: Form submission captured:', { name, email, message });
-                    await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network lag
-                    showNotification('> [DEMO MODE] Message captured successfully! Configure EmailJS to receive actual emails.', 'success');
-                    contactForm.reset();
-                }
+                await sendEmailJSMessage({ name, email, message });
+                showNotification('> Message sent successfully. Transmission complete.', 'success');
+                contactForm.reset();
             } catch (error) {
                 console.error('EmailJS send failed:', error);
                 showNotification(getEmailJSErrorMessage(error), 'error');
@@ -232,22 +231,9 @@ function initEmailJS() {
         return;
     }
 
-    if (isEmailJSConfigured()) {
-        emailjs.init({
-            publicKey: EMAILJS_CONFIG.publicKey
-        });
-    } else {
-        console.warn('EmailJS credentials are still placeholders. Add your Service ID, Template ID, and Public Key in config.js.');
-    }
-}
-
-function isEmailJSConfigured() {
-    if (typeof EMAILJS_CONFIG === 'undefined') return false;
-    return ![
-        EMAILJS_CONFIG.serviceId,
-        EMAILJS_CONFIG.templateId,
-        EMAILJS_CONFIG.publicKey
-    ].some(value => !value || value.startsWith('YOUR_EMAILJS_'));
+    emailjs.init({
+        publicKey: EMAILJS_CREDENTIALS.publicKey
+    });
 }
 
 async function sendEmailJSMessage({ name, email, message }) {
@@ -255,22 +241,17 @@ async function sendEmailJSMessage({ name, email, message }) {
         throw new Error('EmailJS SDK failed to load. Check your internet connection and CDN script.');
     }
 
-    if (!isEmailJSConfigured()) {
-        throw new Error('EmailJS is not configured yet. Add your Service ID, Template ID, and Public Key in config.js.');
-    }
-
     return emailjs.send(
-        EMAILJS_CONFIG.serviceId,
-        EMAILJS_CONFIG.templateId,
+        EMAILJS_CREDENTIALS.serviceId,
+        EMAILJS_CREDENTIALS.templateId,
         {
-            name: name,
-            email: email,
-            reply_to: email,
-            message,
-            to_email: EMAILJS_CONFIG.recipientEmail
+            from_name: name,
+            from_email: email,
+            message: message,
+            to_email: EMAILJS_CREDENTIALS.recipientEmail
         },
         {
-            publicKey: EMAILJS_CONFIG.publicKey
+            publicKey: EMAILJS_CREDENTIALS.publicKey
         }
     );
 }
