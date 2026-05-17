@@ -197,19 +197,25 @@ function initContactForm() {
                 return;
             }
 
+            if (!navigator.onLine) {
+                showNotification('Network error: No internet connection. Please check your network and try again.', 'error');
+                return;
+            }
+
             setContactFormLoading(true, submitButton, buttonText);
 
             try {
                 if (isEmailJSConfigured()) {
                     await sendEmailJSMessage({ name, email, message });
                     showNotification('> Message sent successfully. Transmission complete.', 'success');
+                    contactForm.reset();
                 } else {
                     // Demo Mode Fallback
                     console.log('DEMO MODE: Form submission captured:', { name, email, message });
                     await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network lag
                     showNotification('> [DEMO MODE] Message captured successfully! Configure EmailJS to receive actual emails.', 'success');
+                    contactForm.reset();
                 }
-                contactForm.reset();
             } catch (error) {
                 console.error('EmailJS send failed:', error);
                 showNotification(getEmailJSErrorMessage(error), 'error');
@@ -272,6 +278,10 @@ async function sendEmailJSMessage({ name, email, message }) {
 function getEmailJSErrorMessage(error) {
     if (error?.text) {
         return `Message failed: ${error.text}`;
+    }
+
+    if (error?.message === 'Failed to fetch' || !navigator.onLine) {
+        return 'Network error: Please check your internet connection or disable adblockers/shields and try again.';
     }
 
     return error?.message || 'Message failed to send. Please try again.';
