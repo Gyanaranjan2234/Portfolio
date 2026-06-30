@@ -82,7 +82,7 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -777,7 +777,7 @@ section:nth-child(even) { background: linear-gradient(180deg, var(--bg-secondary
     background: linear-gradient(145deg, rgba(13, 13, 13, 0.84), rgba(5, 5, 5, 0.92));
     border: 1px solid rgba(255, 255, 255, 0.08); padding: 2.5rem 1.8rem; border-radius: 12px;
     transition: transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease, background 0.45s ease;
-    display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: space-between;
+    display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: flex-start;
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 16px 42px rgba(0, 0, 0, 0.22);
 }
@@ -826,11 +826,12 @@ section:nth-child(even) { background: linear-gradient(180deg, var(--bg-secondary
 }
 
 .skill-chip-grid {
-    display: grid; gap: 0.8rem; width: 100%; margin-top: auto;
+    display: grid; gap: 0.8rem; width: 100%;
 }
 .skill-chip-grid.col-2 { grid-template-columns: 1fr 1fr; }
 .skill-chip-grid.col-3 { grid-template-columns: repeat(3, 1fr); }
 .skill-chip {
+    aspect-ratio: 1 / 1;
     background: rgba(0, 255, 136, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 6px; padding: 0.8rem 0.5rem;
@@ -839,12 +840,10 @@ section:nth-child(even) { background: linear-gradient(180deg, var(--bg-secondary
     cursor: default;
     height: 100%;
 }
-.skill-chip-grid.col-2 .skill-chip { flex-direction: row; justify-content: flex-start; padding: 0.8rem 1rem; gap: 1rem; }
 .skill-chip:hover { border-color: rgba(0, 255, 136, 0.4); background: rgba(0, 255, 136, 0.08); transform: translateY(-2px); box-shadow: 0 0 15px rgba(0, 255, 136, 0.15); }
 .skill-chip i { font-size: 1.2rem; color: var(--accent); transition: var(--transition); }
 .skill-chip:hover i { transform: scale(1.1); filter: drop-shadow(0 0 5px var(--accent)); }
 .skill-chip span { font-size: 0.75rem; font-weight: 500; color: var(--text-muted); transition: color 0.3s; text-align: center; }
-.skill-chip-grid.col-2 .skill-chip span { font-size: 0.85rem; }
 .skill-chip:hover span { color: var(--text); }
 
 /* ====== PROJECTS SECTION ====== */
@@ -896,7 +895,7 @@ section:nth-child(even) { background: linear-gradient(180deg, var(--bg-secondary
 .tag { background: rgba(0, 255, 136, 0.08); color: var(--accent); padding: 0.35rem 0.75rem; border-radius: 4px; font-size: 0.8rem; border: 1px solid var(--border-light); transition: var(--transition); font-weight: 500; }
 .tag:hover { background: rgba(0, 255, 136, 0.12); border-color: rgba(0, 255, 136, 0.42); }
 
-.project-links { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; position: relative; z-index: 1; margin-top: auto; }
+.project-links { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; position: relative; z-index: 1;  }
 .project-link { flex: 1; padding: 0.7rem 1rem; background: rgba(0, 255, 136, 0.055); color: var(--accent); border: 1px solid rgba(0, 255, 136, 0.35); border-radius: 6px; text-decoration: none; text-align: center; transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.35s ease; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-weight: 600; font-size: 0.9rem; }
 .project-link:hover { background: rgba(0, 255, 136, 0.13); border-color: rgba(0, 255, 136, 0.72); color: var(--text); transform: translateY(-2px); box-shadow: 0 0 18px rgba(0, 255, 136, 0.12); }
 .project-link i { transition: transform 0.35s ease; }
