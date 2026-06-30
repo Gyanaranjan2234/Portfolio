@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
     <!-- ====== SCROLL PROGRESS BAR ====== -->
@@ -222,194 +222,82 @@
         </div>
     </section>
 
-    <!-- ====== SKILLS SECTION ====== -->
+            <!-- ====== SKILLS SECTION ====== -->
     <section id="skills" class="skills">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Skills & Expertise</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">A blend of technical skills, security tools, and cybersecurity knowledge that power my work.</p>
             
-            <div class="skills-grid">
-                <!-- Programming Languages -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="0">
-                    <h3 class="category-title">
-                        <i class="fas fa-code"></i> Programming
-                    </h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-python"></i>
-                            </div>
-                            <span>Python</span>
+            <div class="skills-grid" data-aos="fade-up" data-aos-delay="200">
+                
+                <!-- Card 1: Programming -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon">
+                            <i class="fas fa-code"></i>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
-                            </div>
-                            <span>C</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-js-square"></i>
-                            </div>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash">
-                            </div>
-                            <span>Bash</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
-                            </div>
-                            <span>Linux</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
-                            </div>
-                            <span>Git</span>
-                        </div>
+                        <h3>Programming & Scripting</h3>
+                        <p class="skill-desc">Languages and scripting skills used for automation, development, and security research.</p>
+                        <div class="skill-divider"></div>
+                    </div>
+                    <div class="skill-chip-grid col-2">
+                        <div class="skill-chip"><i class="fab fa-python"></i><span>Python</span></div>
+                        <div class="skill-chip"><i class="fas fa-c"></i><span>C</span></div>
+                        <div class="skill-chip"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                        <div class="skill-chip"><i class="fas fa-terminal"></i><span>Bash</span></div>
+                        <div class="skill-chip"><i class="fab fa-linux"></i><span>Linux</span></div>
+                        <div class="skill-chip"><i class="fab fa-git-alt"></i><span>Git</span></div>
                     </div>
                 </div>
 
-                <!-- Security Tools -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="category-title">
-                        <i class="fas fa-tools"></i> Security Tools
-                    </h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-bug"></i>
-                            </div>
-                            <span>Burp Suite</span>
+                <!-- Card 2: Security Tools -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon">
+                            <i class="fas fa-tools"></i>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-satellite-dish"></i>
-                            </div>
-                            <span>Nmap</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-skull"></i>
-                            </div>
-                            <span>Metasploit</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <span>SQLMap</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-water"></i>
-                            </div>
-                            <span>Wireshark</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-key"></i>
-                            </div>
-                            <span>Hydra</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-shield-virus"></i>
-                            </div>
-                            <span>Nessus</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <span>Wazuh</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <span>Splunk</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-bug"></i>
-                            </div>
-                            <span>Snort</span>
-                        </div>
+                        <h3>Security Tools</h3>
+                        <p class="skill-desc">Industry-standard tools used for penetration testing, monitoring, and security analysis.</p>
+                        <div class="skill-divider"></div>
+                    </div>
+                    <div class="skill-chip-grid col-2">
+                        <div class="skill-chip"><i class="fas fa-bolt"></i><span>Burp Suite</span></div>
+                        <div class="skill-chip"><i class="fas fa-eye"></i><span>Nmap</span></div>
+                        <div class="skill-chip"><i class="fas fa-shield-alt"></i><span>Metasploit</span></div>
+                        <div class="skill-chip"><i class="fas fa-database"></i><span>SQLMap</span></div>
+                        <div class="skill-chip"><i class="fas fa-wave-square"></i><span>Wireshark</span></div>
+                        <div class="skill-chip"><i class="fas fa-key"></i><span>Hydra</span></div>
+                        <div class="skill-chip"><i class="fas fa-search"></i><span>Nessus</span></div>
+                        <div class="skill-chip"><i class="fas fa-paw"></i><span>Wazuh</span></div>
+                        <div class="skill-chip"><i class="fas fa-chart-bar"></i><span>Splunk</span></div>
+                        <div class="skill-chip"><i class="fas fa-piggy-bank"></i><span>Snort</span></div>
                     </div>
                 </div>
 
-                <!-- Concepts -->
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="category-title">
-                        <i class="fas fa-brain"></i> Concepts
-                    </h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-globe"></i>
-                            </div>
-                            <span>Web App Security</span>
+                <!-- Card 3: Concepts -->
+                <div class="skill-card">
+                    <div class="skill-card-header">
+                        <div class="skill-card-icon">
+                            <i class="fas fa-brain"></i>
                         </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-microscope"></i>
-                            </div>
-                            <span>Vulnerability Assessment</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <span>Penetration Testing</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-shield-halved"></i>
-                            </div>
-                            <span>OWASP Top 10</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <span>SIEM</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-sitemap"></i>
-                            </div>
-                            <span>MITRE ATT&CK</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-magnifying-glass"></i>
-                            </div>
-                            <span>IOC Analysis</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-bug-slash"></i>
-                            </div>
-                            <span>CVE Analysis</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <span>Threat Detection</span>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fas fa-fire-extinguisher"></i>
-                            </div>
-                            <span>Incident Response</span>
-                        </div>
+                        <h3>Cybersecurity Concepts</h3>
+                        <p class="skill-desc">Core cybersecurity methodologies and defensive security practices.</p>
+                        <div class="skill-divider"></div>
+                    </div>
+                    <div class="skill-chip-grid col-3">
+                        <div class="skill-chip"><i class="fas fa-globe"></i><span>Web App Security</span></div>
+                        <div class="skill-chip"><i class="fas fa-search-dollar"></i><span>Vulnerability Assessment</span></div>
+                        <div class="skill-chip"><i class="fas fa-bolt"></i><span>Penetration Testing</span></div>
+                        <div class="skill-chip"><i class="fas fa-shield-virus"></i><span>OWASP Top 10</span></div>
+                        <div class="skill-chip"><i class="fas fa-chart-line"></i><span>SIEM</span></div>
+                        <div class="skill-chip"><i class="fas fa-network-wired"></i><span>MITRE ATT&CK</span></div>
+                        <div class="skill-chip"><i class="fas fa-search"></i><span>IOC Analysis</span></div>
+                        <div class="skill-chip"><i class="fas fa-bug"></i><span>CVE Analysis</span></div>
+                        <div class="skill-chip"><i class="fas fa-bullseye"></i><span>Threat Detection</span></div>
+                        <div class="skill-chip" style="grid-column: 1 / -1; margin: 0 auto; width: 60%; flex-direction: row; gap: 0.5rem;"><i class="fas fa-siren-on" style="margin-right:0.5rem"></i><span>Incident Response</span></div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -813,6 +701,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
     <!-- Custom JS -->
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=5"></script>
 </body>
 </html>
