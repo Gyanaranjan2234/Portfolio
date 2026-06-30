@@ -98,10 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof Typed !== 'undefined') {
         new Typed('.typing-text', {
             strings: [
-                'VAPT Learner',
                 'Bug Bounty Hunter', 
-                'Web App Security',
-                'Ethical Hacker'
+                'SOC Analyst'
             ],
             typeSpeed: 60,
             backSpeed: 40,
