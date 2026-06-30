@@ -454,12 +454,122 @@ function lazyLoadImages() {
     }
 }
 
+// ====== PROJECT CAROUSEL ======
+function initProjectCarousel() {
+    const track = document.getElementById('projectCarousel');
+    const prevBtn = document.getElementById('prevProject');
+    const nextBtn = document.getElementById('nextProject');
+    const dotsContainer = document.getElementById('projectDots');
+    
+    if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+    
+    const slides = Array.from(track.children);
+    if (slides.length === 0) return;
+    
+    let currentIndex = 0;
+    let slidesPerView = window.innerWidth >= 768 ? 2 : 1;
+    let maxIndex = Math.max(0, slides.length - slidesPerView);
+    let dots = [];
+    
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i <= maxIndex; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === currentIndex) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+        dots = Array.from(dotsContainer.children);
+    }
+    
+    function updateCarousel() {
+        slidesPerView = window.innerWidth >= 768 ? 2 : 1;
+        const newMaxIndex = Math.max(0, slides.length - slidesPerView);
+        
+        if (newMaxIndex !== maxIndex) {
+            maxIndex = newMaxIndex;
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            createDots();
+        }
+        
+        // Use offsetLeft for precise calculation including gaps
+        const slide = slides[currentIndex];
+        const offset = slide.offsetLeft;
+        track.style.transform = `translateX(-${offset}px)`;
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+        
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === maxIndex;
+    }
+    
+    function goToSlide(index) {
+        if (index < 0) index = 0;
+        if (index > maxIndex) index = maxIndex;
+        currentIndex = index;
+        updateCarousel();
+    }
+    
+    prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+    nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+    
+    // Touch swipe support
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+        track.style.transition = 'none';
+    }, { passive: true });
+    
+    track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        currentX = e.touches[0].clientX;
+        const diff = currentX - startX;
+        const slide = slides[currentIndex];
+        track.style.transform = `translateX(calc(-${slide.offsetLeft}px + ${diff}px))`;
+    }, { passive: true });
+    
+    track.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        track.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+        
+        const diff = currentX - startX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) goToSlide(currentIndex - 1);
+            else goToSlide(currentIndex + 1);
+        } else {
+            updateCarousel(); // Snap back
+        }
+    });
+    
+    // Handle resize
+    window.addEventListener('resize', debounce(() => {
+        track.style.transition = 'none'; // Disable transition during resize
+        updateCarousel();
+        setTimeout(() => {
+            track.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+        }, 50);
+    }, 250));
+    
+    // Init
+    createDots();
+    setTimeout(updateCarousel, 50);
+}
+
 // ====== INITIALIZATION ======
 
 // Call accessibility enhancements on load
 window.addEventListener('load', () => {
     enhanceAccessibility();
     lazyLoadImages();
+    initProjectCarousel();
 });
 
 // ====== UTILITY FUNCTIONS ======
