@@ -32,6 +32,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 
 body {
@@ -178,6 +179,7 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    padding: 12px 10px;
 }
 
 .nav-toggle span {
@@ -190,7 +192,7 @@ body {
 }
 
 .nav-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
+    transform: translateY(13px) rotate(45deg);
 }
 
 .nav-toggle.active span:nth-child(2) {
@@ -198,7 +200,7 @@ body {
 }
 
 .nav-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
+    transform: translateY(-13px) rotate(-45deg);
 }
 
 /* ====== HERO SECTION ====== */
@@ -863,6 +865,7 @@ section:nth-child(even) { background: linear-gradient(180deg, var(--bg-secondary
 .skill-chip:hover span { color: var(--text); }
 
 /* ====== PROJECTS SECTION ====== */
+#first-project-card { scroll-margin-top: 140px; }
 .carousel-wrapper { display: flex; align-items: center; justify-content: space-between; gap: 1rem; position: relative; width: 100%; }
 .carousel-container { position: relative; width: 100%; overflow: hidden; padding-bottom: 1rem; flex: 1; }
 .carousel-track { display: flex; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); will-change: transform; gap: 2rem; align-items: stretch; touch-action: pan-y pinch-zoom; }
@@ -1095,27 +1098,72 @@ section:nth-child(even) { background: linear-gradient(180deg, var(--bg-secondary
     .nav-menu {
         position: fixed !important;
         top: 0 !important;
-        right: 0 !important; /* right is 0, we use transform to slide */
         left: auto !important;
-        width: 270px !important;
+        right: 0 !important;
+        width: 75% !important;
+        max-width: 320px !important;
         height: 100vh !important;
-        background: rgba(10, 10, 10, 0.94) !important; /* translucent black */
-        backdrop-filter: blur(15px) !important;
-        -webkit-backdrop-filter: blur(15px) !important;
-        border-left: 1px solid rgba(0, 255, 153, 0.12) !important;
-        z-index: 99999 !important;
+        background: #050505 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        filter: none !important;
+        border-left: 1px solid rgba(0, 255, 153, 0.15) !important;
+        z-index: 9999 !important;
         transform: translateX(100%) !important; /* starts hidden off-screen to the right */
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important; /* premium easeOutExpo slide */
-        padding: 90px 30px 40px !important;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        padding: 85px 30px 40px !important;
         overflow-y: auto !important;
         flex-direction: column !important;
-        gap: 1.75rem !important;
-        text-align: left !important; /* aligned left for modern look */
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6) !important;
+        gap: 1.5rem !important;
+        text-align: left !important;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8) !important;
     }
     
     .nav-menu.active {
         transform: translateX(0) !important; /* slides in */
+    }
+    
+    .nav-menu li, .nav-menu .nav-link, .nav-menu * {
+        position: relative !important;
+        z-index: 10000 !important;
+        opacity: 1 !important;
+        filter: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    
+    .drawer-header.mobile-only {
+        display: block;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(0, 255, 153, 0.15);
+    }
+    
+    .drawer-logo {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text);
+    }
+    
+    .drawer-logo .logo-slash {
+        color: var(--accent);
+        margin: 0 4px;
+    }
+    
+    .drawer-logo .logo-sub {
+        font-size: 0.85rem;
+        font-weight: 400;
+        opacity: 0.8;
+    }
+
+    .nav-toggle.active {
+        position: fixed !important;
+        top: 20px !important;
+        right: 20px !important;
+        z-index: 999999 !important;
+        transform: scale(1.1);
+        padding: 12px 10px !important;
+        border-radius: 50% !important;
     }
     
     .nav-menu li {
@@ -1164,15 +1212,34 @@ section:nth-child(even) { background: linear-gradient(180deg, var(--bg-secondary
     .projects-grid, .achievements-grid { grid-template-columns: 1fr; }
     
     /* Projects Mobile Fix */
-    .project-card { padding: 1.25rem !important; }
-    .project-header h3 { font-size: 1.1rem !important; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-    .project-description { font-size: 0.85rem !important; max-width: 100% !important; line-height: 1.6; }
+    /* Projects Mobile Fix */
+    .project-card { 
+        padding: 1.5rem !important;
+        width: calc((100vw - 80px) * 0.85) !important;
+        max-width: none !important;
+        margin: 0 !important;
+        flex: 0 0 calc((100vw - 80px) * 0.85) !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    .project-header h3 { font-size: 1.15rem !important; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .project-description { font-size: 0.9rem !important; max-width: 100% !important; line-height: 1.6; }
     .tag { font-size: 0.75rem !important; padding: 0.25rem 0.6rem !important; }
-    .project-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important; gap: 12px; }
-    .carousel-wrapper { position: relative; gap: 0 !important; }
-    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 32px !important; height: 32px !important; font-size: 0.85rem !important; z-index: 10; background: rgba(5,5,5,0.85); border-color: var(--accent); }
-    .prev-btn { left: -16px !important; }
-    .next-btn { right: -16px !important; }
+    .project-links { display: grid; grid-template-columns: 1fr !important; gap: 12px; }
+    
+    .carousel-wrapper { 
+        position: relative; 
+        display: block !important;
+        width: 100% !important;
+        padding: 0 7.5% !important;
+    }
+    .carousel-container {
+        width: 100% !important;
+        padding-bottom: 0 !important;
+    }
+    .carousel-btn { position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; width: 36px !important; height: 36px !important; font-size: 1rem !important; z-index: 10; background: rgba(5,5,5,0.85) !important; border: 1px solid var(--accent) !important; color: var(--accent) !important; display: flex !important; align-items: center !important; justify-content: center !important; border-radius: 50% !important; }
+    .prev-btn { left: -25px !important; }
+    .next-btn { right: -25px !important; }
 
     /* Timeline Fix */
     .timeline::before { left: 16px !important; top: 1.8rem; bottom: 1.8rem; }
@@ -1460,9 +1527,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
     display: none;
     position: fixed !important;
     inset: 0 !important;
-    background: rgba(0,0,0,0.7) !important;
-    z-index: 99998 !important;
-    backdrop-filter: blur(2px);
+    background: rgba(0,0,0,0.6) !important;
+    z-index: 9998 !important;
 }
 .nav-overlay.active {
     display: block !important;
@@ -1614,23 +1680,30 @@ body.menu-open {
 
   /* FIX 6: Mobile Navigation Z-Index Trap & Visibility */
   nav, header, .navbar, #navbar {
-    z-index: 100000 !important; /* Must be higher than nav-overlay (99998) */
-    backdrop-filter: blur(10px) !important; /* Keep glassmorphism active on mobile */
-    -webkit-backdrop-filter: blur(10px) !important;
+    z-index: 100000 !important; /* Must be higher than nav-overlay */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: transparent !important;
   }
 
   #navMenu, .nav-menu {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
-    background: rgba(10, 10, 10, 0.94) !important; /* Glassmorphism background */
-    backdrop-filter: blur(15px) !important;
-    -webkit-backdrop-filter: blur(15px) !important;
-    z-index: 99999 !important;
+    background: #050505 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    filter: none !important;
+    z-index: 9999 !important;
+    left: auto !important;
+    right: 0 !important;
+    width: 75% !important;
+    max-width: 320px !important;
   }
 
   #navMenu.active, .nav-menu.active {
     right: 0 !important;
+    left: auto !important;
     transform: none !important;
   }
 

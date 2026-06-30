@@ -15,6 +15,11 @@ const toggleMenu = () => {
     navMenu.classList.toggle('active');
     navOverlay.classList.toggle('active');
     document.body.classList.toggle('menu-open');
+    if (navMenu.classList.contains('active')) {
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "";
+    }
 };
 
 const closeMenu = () => {
@@ -22,6 +27,7 @@ const closeMenu = () => {
     navMenu.classList.remove('active');
     navOverlay.classList.remove('active');
     document.body.classList.remove('menu-open');
+    document.body.style.overflow = "";
 };
 
 navToggle.addEventListener('click', toggleMenu);
