@@ -877,7 +877,10 @@ section:nth-child(even) { background: linear-gradient(180deg, var(--bg-secondary
 }
 
 /* ====== ACHIEVEMENTS SECTION ====== */
-.achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.6rem; }
+.achievements-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.6rem; }
+.achievement-card { flex: 1 1 260px; max-width: 100%; }
+@media (min-width: 768px) { .achievements-grid .achievement-card { max-width: calc(50% - 0.8rem); } }
+@media (min-width: 1024px) { .achievements-grid .achievement-card { max-width: calc(25% - 1.2rem); } }
 
 .achievement-card {
     background: linear-gradient(145deg, rgba(13, 13, 13, 0.82), rgba(5, 5, 5, 0.94));
